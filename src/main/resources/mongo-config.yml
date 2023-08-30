@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+   name: mongo-conf
+data:
+ host: cluster0.q5w8d8x.mongodb.net	#localhost
+ database: CIT	#CIT
