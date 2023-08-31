@@ -1,14 +1,18 @@
 package com.projects.CIT_Version1_0.model;
 
 import java.util.Date;
+import java.util.Set;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 
 @Document(collection = "incident")
 public class Incident {
 
-    private Long incidentId;
+    @Id
+	private Long incidentId;
+
     private Boolean active;
     private String state;
     private String priority;
@@ -17,7 +21,7 @@ public class Incident {
     private Date resolvedDate;
     private Date dueDate;
     private String description;
-    private String tags[];
+    private Set<String> tags;
     private String openedBy;
     private String SLA;
     private String SLALapse;
@@ -76,12 +80,19 @@ public class Incident {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public String[] getTags() {
+	public Set<String> getTags() {
 		return tags;
 	}
-	public void setTags(String[] tags) {
-		this.tags = tags;
+
+	public void setTags(Set<String> tags) {
+	this.tags = tags;
 	}
+//	public String[] getTags() {
+//		return tags;
+//	}
+//	public void setTags(String[] tags) {
+//		this.tags = tags;
+//	}
 	public String getOpenedBy() {
 		return openedBy;
 	}
@@ -100,5 +111,23 @@ public class Incident {
 	public void setSLALapse(String sLALapse) {
 		SLALapse = sLALapse;
 	}
-    
+
+	@Override
+	public String toString() {
+		return "Incident{" +
+				"incidentId='" + incidentId + '\'' +
+				", active=" + active +
+				", state='" + state + '\'' +
+				", priority='" + priority + '\'' +
+				", assignedTo='" + assignedTo + '\'' +
+				", assignedGroup='" + assignedGroup + '\'' +
+				", resolvedDate=" + resolvedDate +
+				", dueDate=" + dueDate +
+				", description='" + description + '\'' +
+				", tags=" + tags +
+				", openedBy='" + openedBy + '\'' +
+				", SLA='" + SLA + '\'' +
+				", SLALapse='" + SLALapse + '\'' +
+				'}';
+	}
 }

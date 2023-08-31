@@ -1,12 +1,16 @@
 package com.projects.CIT_Version1_0.view;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.util.Arrays;
+import java.util.Set;
 
 
 @Document(collection = "incident")
 public class Incident {
 
-    private String incidentId;
+	private Long incidentId;
     private Boolean active;
     private String state;
     private String priority;
@@ -15,7 +19,7 @@ public class Incident {
     private String resolvedDate;
     private String dueDate;
     private String description;
-    private String tags[];
+    private Set<String> tags;
     private String openedBy;
     private String SLA;
     private String SLALapse;
@@ -32,10 +36,10 @@ public class Incident {
 	public void setDueDate(String dueDate) {
 		this.dueDate = dueDate;
 	}
-	public String getIncidentId() {
+	public Long getIncidentId() {
 		return incidentId;
 	}
-	public void setIncidentId(String incidentId) {
+	public void setIncidentId(Long incidentId) {
 		this.incidentId = incidentId;
 	}
 	public Boolean getActive() {
@@ -75,12 +79,15 @@ public class Incident {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public String[] getTags() {
+
+	public Set<String> getTags() {
 		return tags;
 	}
-	public void setTags(String[] tags) {
+
+	public void setTags(Set<String> tags) {
 		this.tags = tags;
 	}
+
 	public String getOpenedBy() {
 		return openedBy;
 	}
@@ -99,5 +106,23 @@ public class Incident {
 	public void setSLALapse(String sLALapse) {
 		SLALapse = sLALapse;
 	}
-    
+
+	@Override
+	public String toString() {
+		return "Incident{" +
+				"incidentId=" + incidentId +
+				", active=" + active +
+				", state='" + state + '\'' +
+				", priority='" + priority + '\'' +
+				", assignedTo='" + assignedTo + '\'' +
+				", assignedGroup='" + assignedGroup + '\'' +
+				", resolvedDate='" + resolvedDate + '\'' +
+				", dueDate='" + dueDate + '\'' +
+				", description='" + description + '\'' +
+				", tags=" + tags +
+				", openedBy='" + openedBy + '\'' +
+				", SLA='" + SLA + '\'' +
+				", SLALapse='" + SLALapse + '\'' +
+				'}';
+	}
 }
