@@ -21,7 +21,7 @@ public class IncidentController {
 
     @GetMapping("/getIncidents")
     @CrossOrigin(origins = "*")
-    public ResponseEntity<List<Incident>> getIncidents(){
+    public ResponseEntity<List<com.projects.CIT_Version1_0.view.Incident>> getIncidents(){
         return incidentService.getIncidents();
     }
 

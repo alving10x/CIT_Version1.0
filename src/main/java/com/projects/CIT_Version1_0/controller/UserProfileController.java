@@ -19,7 +19,7 @@ public class UserProfileController {
 
     @GetMapping("/getUsers")
     @CrossOrigin(origins = "*")
-    public ResponseEntity<List<UserProfile>> getUsers(){
+    public ResponseEntity<List<com.projects.CIT_Version1_0.view.UserProfile>> getUsers(){
 
         return userProfileService.getAllUsers();
     }

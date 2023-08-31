@@ -1,16 +1,12 @@
-package com.projects.CIT_Version1_0.model;
+package com.projects.CIT_Version1_0.view;
 
 
-import java.util.Date;
-
-import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "userProfile")
 public class UserProfile {
     
-    private Long userId;
-	@Indexed(unique = true)
+    private String userId;
     private String username;
     private String password;
     private String role;
@@ -18,13 +14,26 @@ public class UserProfile {
     private String company;
     private String createdBy;
     private String updatedBy;
-    private Date createdOn;
-    private Date updatedOn;
-	
-    public Long getUserId() {
+    private String createdOn;
+    private String updatedOn;
+    
+    
+	public String getCreatedOn() {
+		return createdOn;
+	}
+	public void setCreatedOn(String createdOn) {
+		this.createdOn = createdOn;
+	}
+	public String getUpdatedOn() {
+		return updatedOn;
+	}
+	public void setUpdatedOn(String updatedOn) {
+		this.updatedOn = updatedOn;
+	}
+	public String getUserId() {
 		return userId;
 	}
-	public void setUserId(Long userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 	public String getUsername() {
@@ -68,18 +77,6 @@ public class UserProfile {
 	}
 	public void setUpdatedBy(String updatedBy) {
 		this.updatedBy = updatedBy;
-	}
-	public Date getCreatedOn() {
-		return createdOn;
-	}
-	public void setCreatedOn(Date createdOn) {
-		this.createdOn = createdOn;
-	}
-	public Date getUpdatedOn() {
-		return updatedOn;
-	}
-	public void setUpdatedOn(Date updatedOn) {
-		this.updatedOn = updatedOn;
 	}
 	
 }

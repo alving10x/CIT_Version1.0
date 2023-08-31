@@ -1,25 +1,35 @@
-package com.projects.CIT_Version1_0.model;
+package com.projects.CIT_Version1_0.view;
 
 
-import java.util.Date;
-
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "problem")
 public class Problem {
     
-    private Long problemId;
+	@Id
+	@Indexed(unique = true)
+    private String problemId;
     private String knownErrorId;
     private String status;
     private String description;
     private String urgency;
     private String impact[];
     private String associatedService[];
-    private Date createdOn;
-	public Long getProblemId() {
+    private String createdOn;
+    
+    
+	public String getCreatedOn() {
+		return createdOn;
+	}
+	public void setCreatedOn(String createdOn) {
+		this.createdOn = createdOn;
+	}
+	public String getProblemId() {
 		return problemId;
 	}
-	public void setProblemId(Long problemId) {
+	public void setProblemId(String problemId) {
 		this.problemId = problemId;
 	}
 	public String getKnownErrorId() {
@@ -57,12 +67,6 @@ public class Problem {
 	}
 	public void setAssociatedService(String[] associatedService) {
 		this.associatedService = associatedService;
-	}
-	public Date getCreatedOn() {
-		return createdOn;
-	}
-	public void setCreatedOn(Date createdOn) {
-		this.createdOn = createdOn;
 	}
 	
 }

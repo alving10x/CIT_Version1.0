@@ -1,24 +1,26 @@
-package com.projects.CIT_Version1_0.model;
+package com.projects.CIT_Version1_0.view;
 
-import java.util.Date;
-
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "knownError")
 public class KnownError {
 
-    private Long errorId;
+	@Id
+	@Indexed(unique = true)
+    private String errorId;
     private String errorKeywords[];
-    private Date createdOn;
+    private String updatedOn;
     private String errorDescription;
     private String applicationName;
     private String errorStatus;
     private String createdBy;
     
-	public Long getErrorId() {
+	public String getErrorId() {
 		return errorId;
 	}
-	public void setErrorId(Long errorId) {
+	public void setErrorId(String errorId) {
 		this.errorId = errorId;
 	}
 	public String[] getErrorKeywords() {
@@ -27,11 +29,11 @@ public class KnownError {
 	public void setErrorKeywords(String[] errorKeywords) {
 		this.errorKeywords = errorKeywords;
 	}
-	public Date getCreatedOn() {
-		return createdOn;
+	public String getUpdatedOn() {
+		return updatedOn;
 	}
-	public void setCreatedOn(Date createdOn) {
-		this.createdOn = createdOn;
+	public void setUpdatedOn(String updatedOn) {
+		this.updatedOn = updatedOn;
 	}
 	public String getErrorDescription() {
 		return errorDescription;

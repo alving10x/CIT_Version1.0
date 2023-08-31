@@ -1,6 +1,4 @@
-package com.projects.CIT_Version1_0.model;
-
-import java.util.Date;
+package com.projects.CIT_Version1_0.view;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -8,24 +6,36 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "incident")
 public class Incident {
 
-    private Long incidentId;
+    private String incidentId;
     private Boolean active;
     private String state;
     private String priority;
     private String assignedTo;
     private String assignedGroup;
-    private Date resolvedDate;
-    private Date dueDate;
+    private String resolvedDate;
+    private String dueDate;
     private String description;
     private String tags[];
     private String openedBy;
     private String SLA;
     private String SLALapse;
-	
-    public Long getIncidentId() {
+    
+    public String getResolvedDate() {
+		return resolvedDate;
+	}
+	public void setResolvedDate(String resolvedDate) {
+		this.resolvedDate = resolvedDate;
+	}
+	public String getDueDate() {
+		return dueDate;
+	}
+	public void setDueDate(String dueDate) {
+		this.dueDate = dueDate;
+	}
+	public String getIncidentId() {
 		return incidentId;
 	}
-	public void setIncidentId(Long incidentId) {
+	public void setIncidentId(String incidentId) {
 		this.incidentId = incidentId;
 	}
 	public Boolean getActive() {
@@ -58,18 +68,7 @@ public class Incident {
 	public void setAssignedGroup(String assignedGroup) {
 		this.assignedGroup = assignedGroup;
 	}
-	public Date getResolvedDate() {
-		return resolvedDate;
-	}
-	public void setResolvedDate(Date resolvedDate) {
-		this.resolvedDate = resolvedDate;
-	}
-	public Date getDueDate() {
-		return dueDate;
-	}
-	public void setDueDate(Date dueDate) {
-		this.dueDate = dueDate;
-	}
+	
 	public String getDescription() {
 		return description;
 	}

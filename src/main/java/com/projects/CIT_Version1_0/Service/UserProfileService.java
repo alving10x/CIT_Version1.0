@@ -1,13 +1,17 @@
 package com.projects.CIT_Version1_0.Service;
 
 import com.projects.CIT_Version1_0.dao.UserProfileDao;
+import com.projects.CIT_Version1_0.model.Incident;
 import com.projects.CIT_Version1_0.model.LoginRequest;
 import com.projects.CIT_Version1_0.model.UserProfile;
+
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,10 +20,21 @@ public class UserProfileService {
 
     @Autowired
     UserProfileDao userProfileDao;
-    public ResponseEntity<List<UserProfile>> getAllUsers() {
-        try {
-            return new ResponseEntity<>(userProfileDao.findAll(), HttpStatus.OK);
-
+    public ResponseEntity<List<com.projects.CIT_Version1_0.view.UserProfile>> getAllUsers() {
+    	try {
+        	SimpleDateFormat dateTime = new SimpleDateFormat("dd MMM yyyy hh:mm:ss zzz");
+        	List<UserProfile> profiles = userProfileDao.findAll();
+        	List<com.projects.CIT_Version1_0.view.UserProfile> profileResults = new ArrayList<com.projects.CIT_Version1_0.view.UserProfile>();
+        	for(UserProfile profile : profiles) {
+        		com.projects.CIT_Version1_0.view.UserProfile viewProfile = new com.projects.CIT_Version1_0.view.UserProfile();
+        		System.out.println(dateTime.format(profile.getCreatedOn()));
+        		System.out.println(dateTime.format(profile.getUpdatedOn()));
+        		BeanUtils.copyProperties(profile, viewProfile);
+        		viewProfile.setCreatedOn(dateTime.format(profile.getCreatedOn()));
+        		viewProfile.setUpdatedOn(dateTime.format(profile.getUpdatedOn()));
+        		profileResults.add(viewProfile);
+        	}
+        	return new ResponseEntity<>(profileResults, HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();
         }
